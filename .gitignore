@@ -1,0 +1,52 @@
+# Python environments, caches and temporary files
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local configuration and secrets (PostgreSQL passwords are never stored in files)
+.env
+.env.*
+*.secret
+pgpass.conf
+.pgpass
+config.local.*
+
+# Trip data: not redistributed (license restriction, see data/README.md)
+data/raw/
+data/extracted/
+*.zip
+
+# Pipeline outputs written at run time (logs contain machine-specific information)
+reports/logs/
+reports/qa_clean/
+reports/sensitivity/
+reports/stations_precheck/
+reports/*_output.txt
+*.log
+
+# LaTeX build artefacts (the final PDF is copied to reports/ by scripts/build_latex_report.py)
+reports/latex/build/
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+*.bbl
+*.blg
+*.lof
+*.lot
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

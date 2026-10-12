@@ -1,0 +1,4 @@
+member_casual,trajets,part_pct,moyenne_min,mediane_min,p25_min,p75_min,p90_min,p99_min,ecart_type_min,trajets_plus_24h,part_30min_plus_pct,moyenne_min_dst_corrigee,mediane_min_dst_corrigee
+casual,2114500,35.17,21.11,11.17,6.49,20.04,36.05,120.65,74.69,4196,13.49,21.11,11.17
+member,3897958,64.83,12.60,8.69,5.19,14.63,23.42,51.97,32.90,1108,5.42,12.60,8.69
+TOUS,6012458,100.00,15.59,9.46,5.58,16.33,27.29,82.60,51.77,5304,8.25,15.59,9.46

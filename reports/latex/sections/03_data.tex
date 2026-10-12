@@ -1,0 +1,37 @@
+\section{Data and scope}
+\label{sec:data}
+
+\begin{table}[H]
+\caption{Data source and scope}
+\label{tab:scope}
+\small
+\begin{tabularx}{\linewidth}{L{3.6cm} Y}
+\toprule
+\thead{Item} & \thead{Description} \\
+\midrule
+Source & Divvy public trip data, Chicago (``Cyclistic'' is a fictional name), via the link provided by the case study. \\
+License & Made available by Motivate International Inc. according to the case study; used under the Divvy Data License Agreement (Appendix~\ref{sec:refs}). \\
+Files & 12 monthly archives, \file{202510} to \file{202609-divvy-tripdata.zip}; SHA-256 checksums recorded. \\
+Period & Rides started from 1~October 2025, 12:00 a.m., to 30~September 2026, 11:59 p.m. (local time), i.e. the 12 most recent complete months. \\
+Volume & 6,171,785 raw rows; 6,012,458 rides after cleaning. \\
+Variables & Ride identifier, bike type (classic or electric), start and end timestamps, stations (name, identifier), coordinates, rider type. \\
+Privacy & No personal data: rides cannot be linked to a person, a payment method or a place of residence (in line with the case study instructions). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Reliability (ROCCC framework).}
+\begin{itemize}
+  \item \textbf{Reliable, Original:} first-party data from the operator, published monthly.
+  \item \textbf{Comprehensive:} all rentals in the period, but without a rider identifier, prices, pass types or weather.
+  \item \textbf{Current:} recent period (the 12 most recent complete months at the time of the analysis).
+  \item \textbf{Cited:} source and license identified.
+\end{itemize}
+
+\textbf{Source characteristics detected during the audits} \Mes
+\begin{itemize}
+  \item The January 2026 CSV file is named \file{202501-divvy-tripdata.csv} inside the \file{202601} archive; its content does correspond to January 2026.
+  \item 35 rides from 30~April to 1~May 2026 appear identically in both the April and the May files.
+  \item No ride crosses the boundary from 31~March to 1~April 2026, whereas the other month boundaries have between 12 and 173: a possible gap, estimated by analogy at between 28 and 102 rides (an estimate, not a measurement).
+  \item Rides started on 30~September 2026 and ended in October have not yet been published.
+\end{itemize}

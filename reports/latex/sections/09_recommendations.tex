@@ -1,0 +1,46 @@
+\section{Three marketing recommendations}
+\label{sec:recos}
+
+Each recommendation starts from a measured finding \Mes{}; the proposed action is a hypothesis \Hyp{} whose effectiveness must be demonstrated through experimentation before any large-scale roll-out.
+
+\begin{table}[H]
+\caption{Overview of the recommendations}
+\label{tab:recos}
+\small
+\begin{tabularx}{\linewidth}{c L{4.1cm} Y L{2.6cm}}
+\toprule
+\thead{\#} & \thead{Recommendation} & \thead{Main finding} & \thead{Evaluation} \\
+\midrule
+1 & Convert casual riders with utilitarian usage & 23.1\% of casual rides: weekdays, peak hours; shared peak at 5 p.m. & A/B test \\
+2 & Leisure-oriented spring--summer campaign & 71.0\% of casual rides from May to September; 37.2\% at weekends & Test and control areas \\
+3 & Digital communication on ride duration and e-bikes & 25.1\% of casual rides last at least 20~min; 74.1\% on e-bikes & A/B test between variants \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ---------------------------------------------------------------------------------
+\newcommand{\recoline}[2]{\textbf{#1}\quad #2\par\smallskip}
+
+\subsection{Recommendation 1 — Convert casual riders with utilitarian usage}
+\recoline{Finding \Mes}{23.1\% of casual rides (487,667 rides) start on weekdays during peak hours, vs 35.3\% for members; the 5 p.m. peak is shared by both groups; on e-bikes on weekdays (47.5\% of casual rides), their median duration (9.39~min) is close to that of members (8.33~min).}
+\recoline{Target audience}{Casual riders who ride regularly on weekdays during peak hours, to be identified in Cyclistic's customer accounts (the analyzed data set does not allow this).}
+\recoline{Action \Hyp}{In-app and email message triggered after these rides, presenting the membership as the plan for everyday trips; a trial offer whose amount is still to be set by the finance team.}
+\recoline{Timing}{Weekdays, from March to May, when activity picks up and before the summer peak.}
+\recoline{Success metric}{60-day conversion rate of exposed accounts; in addition, the share of peak-hour rides taken by members (73.8\% today).}
+\recoline{To validate}{The commuting motive is assumed; the effect of price is unknown.}
+
+\subsection{Recommendation 2 — Leisure-oriented spring--summer campaign}
+\recoline{Finding \Mes}{71.0\% of casual rides take place from May to September; their share reaches 40.9\% of rides in July; 37.2\% of their rides take place at weekends, including 21.2\% on Saturdays; round trips are 3.4 times more frequent than among members.}
+\recoline{Target audience}{Leisure casual riders: weekends, warm season, long rides or round trips.}
+\recoline{Action \Hyp}{Campaign on social media and in the app, presence at the busiest leisure stations; test a seasonal plan (a product and pricing decision, outside the scope of this analysis).}
+\recoline{Timing}{From April to June, with highlights on Fridays and Saturdays.}
+\recoline{Success metric}{New annual memberships in test areas compared with control areas.}
+\recoline{To validate}{No weather or price data; a single year; leisure stations to be identified once station identifier consistency has been decided; occasional visitors may be hard to convert.}
+
+\subsection{Recommendation 3 — Digital communication on ride duration and e-bikes}
+\recoline{Finding \Mes}{25.1\% of casual rides last at least 20~min (14.1\% for members); on classic bikes at weekends, their median duration is 17.79~min vs 10.09~min; 74.1\% of their rides are on e-bikes.}
+\recoline{Target audience}{Casual riders who take long rides or mainly use e-bikes.}
+\recoline{Action \Hyp}{Message triggered after a long ride: cost of the pass used compared with the membership, calculated on the actual price list; member benefits on e-bikes, if the offer includes any. This also addresses Lily Moreno's question 3 on digital media.}
+\recoline{Timing}{Right after the ride, during the active season.}
+\recoline{Success metric}{Click-through rate and conversion rate by message variant.}
+\recoline{To validate}{No price data: the savings for the rider must be checked with the finance team before any communication; exclude anomalous rides longer than 24~hours.}

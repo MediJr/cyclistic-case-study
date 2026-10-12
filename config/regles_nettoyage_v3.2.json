@@ -1,0 +1,27 @@
+{
+  "rules_version": "v3.2",
+  "plan_document": "docs/plan_nettoyage_v3.2.md",
+  "description": "Paramètres des règles R1-R11 du plan v3.2. Toute modification de ce fichier change son empreinte, enregistrée dans audit.run.",
+  "period": {"start_inclusive": "2025-10-01 00:00:00", "end_exclusive": "2026-10-01 00:00:00", "basis": "started_at"},
+  "dedup": {"key": "ride_id", "keep": "first", "order_by": ["file_month", "source_line"], "conflict_policy": "abort"},
+  "exclusion_order": ["duplicate_ride_id", "out_of_period", "negative_duration", "under_60s"],
+  "min_duration_sec": 60,
+  "dst": {
+    "timezone": "America/Chicago",
+    "fall_back_ambiguous_hour_start": "2025-11-02 01:00:00",
+    "fall_back_ambiguous_hour_end": "2025-11-02 02:00:00",
+    "spring_forward_gap_start": "2026-03-08 02:00:00",
+    "spring_forward_gap_end": "2026-03-08 03:00:00",
+    "spring_forward_correction_sec": 3600,
+    "fall_back_correction": "none"
+  },
+  "station_normalization": {
+    "columns": ["start_station_name", "start_station_id", "end_station_name", "end_station_id"],
+    "trim_characters": " ",
+    "trim_positions": "leading_and_trailing",
+    "internal_spaces": "preserved"
+  },
+  "chicago_bbox": {"lat_min": 41.5, "lat_max": 42.2, "lng_min": -88.2, "lng_max": -87.3},
+  "long_trip_flag_sec": 86400,
+  "staff_or_test_stations": {"policy": "document_only", "exclusion": false, "name_pattern": "test|charging|warehouse|divvy|lbs-wh|hubbard bike|repair|valet|base"}
+}

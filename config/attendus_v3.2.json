@@ -1,0 +1,60 @@
+{
+  "rules_version": "v3.2",
+  "sources": "missions 2-4.4 : reports/audit_import_output.txt, scripts/mesure_cascade_attendue.py, revue 4.3 (M1, M2), mission 4.4",
+  "raw_rows": 6171785,
+  "source_files": 12,
+  "excluded": {"duplicate_ride_id": 35, "out_of_period": 71, "negative_duration": 29, "under_60s": 159192},
+  "kept": 6012458,
+  "kept_by_member": {"member": 3897958, "casual": 2114500},
+  "kept_by_month": {
+    "2025-10": 629080, "2025-11": 346963, "2025-12": 136584, "2026-01": 133936,
+    "2026-02": 197432, "2026-03": 308729, "2026-04": 435832, "2026-05": 635978,
+    "2026-06": 742079, "2026-07": 846786, "2026-08": 847158, "2026-09": 751901
+  },
+  "flags": {
+    "has_end_location_false": 5432,
+    "is_over_24h": 5304,
+    "dst_fall_back_overlap": 474,
+    "dst_spring_forward_span": 40,
+    "start_station_missing": 1201895,
+    "end_station_missing": 1250672
+  },
+  "subsets": {
+    "v_trips_geo": 6007026,
+    "v_trips_start_station": 4810563,
+    "v_trips_end_station": 4761786,
+    "v_trips_station_pair": 4049494
+  },
+  "max_ride_length_sec_at_most": 93597,
+  "duplicates": {"excluded_from": "202605-divvy-tripdata.csv", "kept_from": "202604-divvy-tripdata.csv"},
+  "normalization": {
+    "max_trimmed_rows_raw": {"start_station_name": 34541, "start_station_id": 643, "end_station_name": 36756, "end_station_id": 587},
+    "max_distinct_trimmed_values_raw": {"start_station_name": 10, "start_station_id": 1, "end_station_name": 11, "end_station_id": 1},
+    "allowed_merges": {
+      "start_station_name": ["Sheffield Ave & Addison St"],
+      "end_station_name": ["Sheffield Ave & Addison St"],
+      "start_station_id": ["CHI02331"],
+      "end_station_id": ["CHI02331"]
+    }
+  },
+  "known_anomalies": {"march_april_crossings": 0},
+  "reference_info_raw_rows": {
+    "S1_ids_with_several_names": {"start": 55, "end": 53},
+    "S2_names_with_several_ids": {"start": 60, "end": 59},
+    "S5_staff_or_test_rows_kept": 41
+  },
+  "raw_fingerprint": {
+    "202501-divvy-tripdata.csv": [137787, "79488419214720527102013"],
+    "202510-divvy-tripdata.csv": [646039, "372102275482706655985070"],
+    "202511-divvy-tripdata.csv": [356628, "205540522437875586878967"],
+    "202512-divvy-tripdata.csv": [140534, "80956244315237602181856"],
+    "202602-divvy-tripdata.csv": [201450, "116137476409494187330275"],
+    "202603-divvy-tripdata.csv": [317037, "183244631682203079891880"],
+    "202604-divvy-tripdata.csv": [448252, "258581421155875940309865"],
+    "202605-divvy-tripdata.csv": [653704, "376537236922384936914526"],
+    "202606-divvy-tripdata.csv": [762550, "439623158573292374238327"],
+    "202607-divvy-tripdata.csv": [869051, "500747302646413318372685"],
+    "202608-divvy-tripdata.csv": [868191, "500376362294156491630698"],
+    "202609-divvy-tripdata.csv": [770562, "443691204411916438053232"]
+  }
+}

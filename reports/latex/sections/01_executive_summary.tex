@@ -1,0 +1,34 @@
+\clearpage
+\section{Executive summary}
+\label{sec:summary}
+
+\textbf{Question.} How do annual members and casual riders use Cyclistic bikes differently?
+The business goal, set by the marketing director, is to convert more casual riders into annual members.
+
+\textbf{Data.} 6,012,458 rides started between 1~October 2025 and 30~September 2026, after documented and verified data cleaning (72 quality checks, raw data left unchanged).
+
+\begin{center}
+\begin{minipage}[t]{0.235\linewidth}\keyfig{member}{64.8\%}{of rides are taken by annual members}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\keyfig{casual}{11.2~vs~8.7}{minutes of median ride duration, casual riders vs members}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\keyfig{casual}{37\% vs 23\%}{of rides take place at the weekend, casual riders vs members}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\keyfig{casual}{×14~vs~×4.7}{ratio between the busiest and the quietest month}\end{minipage}
+\end{center}
+
+\textbf{What the data show} \Mes
+\begin{itemize}
+  \item \textcolor{casual}{\textbf{Casual riders}} take longer rides (median 11.2 vs 8.7~min), ride more at weekends, in the afternoon and in summer, and more often make round trips (7.4\% vs 2.2\%).
+  \item \textcolor{member}{\textbf{Members}} take short, regular rides, concentrated on weekdays, with a morning peak (7--9 a.m.) twice as pronounced as among casual riders; their activity holds up in winter.
+  \item A bridge exists: 62.8\% of casual rides take place on weekdays and 23.1\% start on weekdays during peak hours.
+  \item The differences hold in sensitivity analyses (rides shorter than 60~s added back; 31~March and 1~April removed).
+\end{itemize}
+
+\textbf{Three recommendations, to be tested before any roll-out} \Hyp
+\begin{enumerate}
+  \item \textbf{Prioritize converting casual riders whose usage resembles that of members} (weekday peak-hour rides), with targeted messages evaluated through A/B testing.
+  \item \textbf{Launch a leisure-oriented spring--summer campaign}, from April to June, ahead of the summer peak, evaluated against control areas.
+  \item \textbf{Personalize digital communication based on ride duration and e-bike use}, after first checking the pricing structure.
+\end{enumerate}
+
+\begin{keybox}[Limitations to keep in mind]
+The data describe rides, without a rider identifier, prices, pass types or weather: they show \emph{how} the bikes are used, not \emph{why}, nor how many people are behind the rides. The recommendations are hypotheses grounded in measured findings; their effectiveness remains to be demonstrated.
+\end{keybox}

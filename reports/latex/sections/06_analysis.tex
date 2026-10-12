@@ -1,0 +1,76 @@
+\section{Comparative analysis of members and casual riders}
+\label{sec:analysis}
+
+Unless stated otherwise, all percentages in this section are computed on each group's rides (3,897,958 member rides, 2,114,500 casual rides). In ``A vs B'' comparisons, A refers to casual riders and B to members.
+
+\subsection{Volume and duration}
+
+\begin{table}[!htb]
+\caption{Summary by rider type}
+\label{tab:riders}
+\small
+\input{generated/t_usagers}
+\par\smallskip{\footnotesize\color{muted}Source: \file{results/analysis/a01\_usagers.csv}, \file{a02\_durees\_tranches.csv}. Durations in minutes, computed from the raw timestamps.}
+\end{table}
+
+\Mes{} Nearly two rides out of three are taken by members. Casual rides are longer across the whole distribution: a median 29\% higher, a 90th percentile 54\% higher, and 13.5\% of rides lasting at least 30~min vs 5.4\%. The gap depends strongly on the season: in January, the medians are almost identical (7.13 vs 7.17~min); in June, they are 12.35 vs 9.47~min.
+
+\subsection{Day of the week}
+
+\begin{table}[!htb]
+\caption{Distribution of rides and median duration by day of departure}
+\label{tab:days}
+\small
+\input{generated/t_jours}
+\par\smallskip{\footnotesize\color{muted}Source: \file{a03\_jour.csv}. A uniform distribution would put 28.6\% of rides at the weekend.}
+\end{table}
+
+\Mes{} The weekend accounts for 37.2\% of casual rides vs 23.3\% of member rides; Saturday is the busiest day for casual riders (21.2\%). Members ride mostly from Tuesday to Thursday. The gap in median duration is largest on Saturday (13.06 vs 9.55~min).
+
+\subsection{Month and seasonality}
+
+\begin{table}[!htb]
+\caption{Rides and median duration by month of departure}
+\label{tab:months}
+\small
+\input{generated/t_mois}
+\par\smallskip{\footnotesize\color{muted}Source: \file{a04\_mois.csv}. March 2026: possible gap for rides crossing midnight on the 31st (Section~\ref{sec:data}).}
+\end{table}
+
+\Mes{} Both groups follow the same calendar, with very different amplitudes: ×14.4 between January and July for casual riders, ×4.7 between December and August for members. From May to September, casual riders take 71.0\% of their annual rides (59.6\% for members); their share of all rides ranges from 17.9\% in January to 40.9\% in July.
+
+\subsection{Hour of departure}
+
+\begin{table}[!htb]
+\caption{Hourly indicators}
+\label{tab:hours}
+\small
+\input{generated/t_heures}
+\par\smallskip{\footnotesize\color{muted}Source: \file{a05\_heure.csv}. Local time of departure; ``7--9 a.m.'' covers departures from 7:00 to 8:59 a.m.}
+\end{table}
+
+\Mes{} On weekdays, the morning peak is twice as pronounced among members (15.1\% vs 7.6\%), while both groups peak at 5 p.m. At weekends, their hourly profiles are almost identical. \Int{} The members' double peak is consistent with commuting; part of the casual weekday rides follows the same rhythm.
+
+\subsection{Bike type and interactions}
+
+\begin{table}[!htb]
+\caption{Bike type and type of day}
+\label{tab:bikes}
+\small
+\input{generated/t_velo_jour}
+\par\smallskip{\footnotesize\color{muted}Source: \file{a06\_velo.csv}, \file{a07\_interactions.csv}. The excluded rides shorter than 60~s were all e-bike rides.}
+\end{table}
+
+\Mes{} E-bikes account for the majority of rides in both groups. The duration gap is largest for classic bikes at weekends (17.79 vs 10.09~min) and smallest for e-bikes on weekdays (9.39 vs 8.33~min), the most frequent combination in both groups.
+
+\subsection{Round trips}
+
+\begin{table}[!htb]
+\caption{Rides ending at their start station}
+\label{tab:roundtrips}
+\small
+\input{generated/t_boucles}
+\par\smallskip{\footnotesize\color{muted}Source: \file{a08\_boucles.csv}. Computed only for rides with both stations; the share of rides covered is shown in parentheses.}
+\end{table}
+
+\Mes{} Round trips are 3.4 times more frequent among casual riders. \Int{} This points to leisure use, to be confirmed by a station-level analysis.

@@ -1,0 +1,54 @@
+% =============================================================================
+%  Cyclistic — professional report (Google Data Analytics capstone), English edition
+%  Build: see README.md (XeLaTeX, three passes, or python -I scripts/build_latex_report.py)
+% =============================================================================
+\documentclass[11pt, a4paper, oneside, headings=normal, numbers=noenddot]{scrartcl}
+\usepackage{cyclistic-eisvogel}
+\graphicspath{{../../visualizations/}}
+
+% --- Metadata (edit in one place) -------------------------------------------------
+\newcommand{\ReportAuthor}{LUMU BAMANA MANASSE}
+\newcommand{\ReportShortTitle}{Cyclistic — case study}
+\newcommand{\ReportTitle}{Cyclistic: annual members\\and casual riders}
+\newcommand{\ReportSubtitle}{Two ways of using a bike-share service:\\an analysis of 6,012,458 rides and three recommendations}
+\newcommand{\ReportContext}{Google Data Analytics Professional Certificate\par\smallskip
+  Case Study 1: \textit{How does a bike-share navigate speedy success?}}
+\newcommand{\ReportMeta}{%
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{0.8em}}Y@{}}
+  \textbf{Author:} & \ReportAuthor \\[0.35em]
+  \textbf{Report date:} & 11 October 2026 \\[0.35em]
+  \textbf{Data period:} & rides started from 1 October 2025 to 30 September 2026 \\[0.35em]
+  \textbf{Source:} & Divvy public trip data (Chicago), used under the Divvy Data License Agreement \\[0.35em]
+   & \textcolor{accent}{\url{https://divvy-tripdata.s3.amazonaws.com/index.html}}
+  \end{tabularx}}
+\hypersetup{pdftitle={Cyclistic: annual members and casual riders}, pdfauthor={\ReportAuthor},
+  pdfsubject={Google Data Analytics capstone — Cyclistic case study}, pdflang={en-US}}
+
+\begin{document}
+\MakeTitlePage
+
+% --- Contents ---------------------------------------------------------------------
+\pagenumbering{roman}
+\setcounter{tocdepth}{2}
+\begingroup
+\addtokomafont{sectionentry}{\color{accent}}
+\tableofcontents
+\endgroup
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/00_reading_guide}
+\input{sections/01_executive_summary}
+\input{sections/02_context}
+\input{sections/03_data}
+\input{sections/04_methodology}
+\input{sections/05_cleaning}
+\input{sections/06_analysis}
+\input{sections/07_visualizations}
+\input{sections/08_key_insights}
+\input{sections/09_recommendations}
+\input{sections/10_measurement}
+\input{sections/11_limitations}
+\input{sections/12_conclusion}
+\input{sections/13_appendices}
+\end{document}

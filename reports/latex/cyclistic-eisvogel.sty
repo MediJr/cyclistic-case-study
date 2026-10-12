@@ -1,0 +1,187 @@
+% =============================================================================
+%  cyclistic-eisvogel.sty — layout of the Cyclistic report
+%
+%  Stand-alone adaptation (no pandoc) of parts of the "Eisvogel" template:
+%    https://github.com/Wandmalfarbe/pandoc-latex-template
+%    source files: template-multi-file/eisvogel-added.latex and
+%    template-multi-file/eisvogel-title-page.latex (commit 93cc5b8e, 2026)
+%    original copies and licence: third_party/eisvogel/
+%
+%  Modifications (2026, Cyclistic project, LUMU BAMANA MANASSE): pandoc variables
+%  replaced by LaTeX macros, fonts, colour palette, headers and footers, coloured
+%  headings, captions, summary boxes and lists; see reports/latex/README.md.
+%  The modifications are distributed under the same BSD 3-Clause licence.
+%  The authors of Eisvogel do not endorse this project.
+%
+%  Original licence (verbatim copy also in third_party/eisvogel/LICENSE):
+%
+%  Copyright (c) 2017 - 2026, Pascal Wagler;
+%  Copyright (c) 2014 - 2026, John MacFarlane
+%  All rights reserved.
+%
+%  Redistribution and use in source and binary forms, with or without
+%  modification, are permitted provided that the following conditions are met:
+%
+%  1. Redistributions of source code must retain the above copyright notice, this
+%     list of conditions and the following disclaimer.
+%
+%  2. Redistributions in binary form must reproduce the above copyright notice,
+%     this list of conditions and the following disclaimer in the documentation
+%     and/or other materials provided with the distribution.
+%
+%  3. Neither the name of the copyright holder nor the names of its
+%     contributors may be used to endorse or promote products derived from
+%     this software without specific prior written permission.
+%
+%  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+%  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+%  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+%  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+%  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+%  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+%  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+%  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+%  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+%  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+% =============================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cyclistic-eisvogel}[2026/10/11 Cyclistic report style derived from Eisvogel]
+
+% --- Language and fonts (XeLaTeX or LuaLaTeX) ----------------------------------
+\RequirePackage{fontspec}
+\RequirePackage[english]{babel}
+\setmainfont{CharisSIL}[
+  Extension = .ttf, UprightFont = *-Regular, BoldFont = *-Bold,
+  ItalicFont = *-Italic, BoldItalicFont = *-BoldItalic, Scale = 0.95]
+\setsansfont{FiraSans}[
+  Extension = .otf, UprightFont = *-Regular, BoldFont = *-SemiBold,
+  ItalicFont = *-Italic, BoldItalicFont = *-SemiBoldItalic,
+  FontFace = {l}{n}{*-Light}, FontFace = {l}{it}{*-LightItalic}]
+\setmonofont{SourceCodePro}[
+  Extension = .otf, UprightFont = *-Regular, BoldFont = *-Semibold, Scale = 0.85]
+\RequirePackage{microtype}
+\RequirePackage{csquotes}
+
+% --- Palette -------------------------------------------------------------------
+\RequirePackage[table]{xcolor}
+\definecolor{accent}{HTML}{1E2761}      % Cyclistic navy (headings, rules)
+\definecolor{member}{HTML}{2A78D6}      % annual members (same as the charts)
+\definecolor{casual}{HTML}{EB6834}      % casual riders (same as the charts)
+\definecolor{ink}{HTML}{1F1F24}         % body text
+\definecolor{muted}{HTML}{5F5F66}       % secondary text (Eisvogel: 5F5F5F)
+\definecolor{rule}{HTML}{C9CCD6}        % rules
+\definecolor{titlepage-color}{HTML}{EEF2F8}
+\definecolor{boxbg}{HTML}{F2F4F9}
+\color{ink}
+
+% --- Page (Eisvogel: 2.5 cm margins, header and footer included) ----------------
+\RequirePackage[a4paper, margin=2.3cm, top=2.2cm, bottom=2.4cm,
+  includehead=true, includefoot=true, centering]{geometry}
+\RequirePackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em plus 0.2em}
+
+% --- Headings (KOMA-Script) ------------------------------------------------------
+\addtokomafont{disposition}{\sffamily\bfseries\color{accent}}
+\addtokomafont{section}{\Large}
+\addtokomafont{subsection}{\large}
+\addtokomafont{subsubsection}{\normalsize}
+\RedeclareSectionCommand[beforeskip=-1.6\baselineskip, afterskip=0.5\baselineskip]{section}
+\RedeclareSectionCommand[beforeskip=-1.0\baselineskip, afterskip=0.25\baselineskip]{subsection}
+\RedeclareSectionCommand[beforeskip=-0.8\baselineskip, afterskip=0.2\baselineskip]{subsubsection}
+% thin rule under section headings
+\renewcommand*{\sectionlinesformat}[4]{%
+  \ifstr{#1}{section}
+    {\parbox[t]{\linewidth}{\raggedsection\@hangfrom{\hskip #2#3}{#4}\par
+      \vspace{-0.45\baselineskip}{\color{rule}\rule{\linewidth}{0.6pt}}}}
+    {\@hangfrom{\hskip #2#3}{#4}}}
+\renewcommand*{\sectionformat}{\thesection.\enskip}
+
+% --- Header and footer (Eisvogel: scrlayer-scrpage, header rule) ------------------
+\RequirePackage[headsepline=0.4pt, footsepline=false, autooneside=false]{scrlayer-scrpage}
+\RequirePackage{lastpage}
+\addtokomafont{pageheadfoot}{\upshape\sffamily\footnotesize\color{muted}}
+\setkomafont{pagenumber}{\sffamily\footnotesize\color{muted}}
+\addtokomafont{headsepline}{\color{rule}}
+\automark[section]{section}
+\newpairofpagestyles{cyclistic}{%
+  \clearpairofpagestyles
+  \ihead*{\ReportShortTitle}
+  \ohead*{\headmark}
+  \cfoot*{\thepage\,/\,\pageref*{LastPage}}}
+\pagestyle{cyclistic}
+\renewcommand*{\titlepagestyle}{cyclistic}
+
+% --- Captions (Eisvogel: captions above tables, bold label) -----------------------
+\RequirePackage[font={small, stretch=1.15}, labelfont={bf, color=accent, sf},
+  labelsep=colon, justification=raggedright, singlelinecheck=false, skip=3mm]{caption}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+
+% --- Tables (Eisvogel: booktabs, grey rules, 1.3 line spacing) ----------------------
+\RequirePackage{booktabs, tabularx, array, multirow}
+\RequirePackage{colortbl}
+\arrayrulecolor{rule}
+\setlength\heavyrulewidth{0.6pt}
+\setlength\lightrulewidth{0.4pt}
+\renewcommand{\arraystretch}{1.28}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\thead}[1]{\textsf{\bfseries\small #1}}
+
+% --- Lists: bullets in the accent colour ---------------------------------------------
+\RequirePackage{enumitem}
+\setlist{itemsep=0.2em, topsep=0.3em, parsep=0pt, leftmargin=1.3em}
+\setlist[itemize,1]{label={\color{accent}\textbullet}}
+\setlist[enumerate,1]{label={\color{accent}\sffamily\bfseries\arabic*.}}
+
+% --- Summary boxes -------------------------------------------------------------------
+\RequirePackage[most]{tcolorbox}
+\tcbset{keybox style/.style={enhanced, colback=boxbg, colframe=boxbg, arc=2pt,
+  boxrule=0pt, left=10pt, right=10pt, top=8pt, bottom=8pt, fonttitle=\sffamily\bfseries,
+  coltitle=accent, attach title to upper={\par\smallskip}}}
+\newtcolorbox{keybox}[1][]{keybox style, title={#1}, breakable}
+% unbreakable variant, for boxes placed side by side in minipages (a page break would cut them)
+\newtcolorbox{keyboxfixed}[1][]{keybox style, title={#1}}
+% key-figure card: \keyfig{colour}{value}{label}
+\newcommand{\keyfig}[3]{%
+  \begin{tcolorbox}[enhanced, colback=boxbg, colframe=boxbg, arc=2pt, boxrule=0pt,
+    width=\linewidth, height=3.3cm, valign=top, left=8pt, right=8pt, top=8pt]
+    \raggedright{\sffamily\bfseries\fontsize{15}{19}\selectfont\color{#1}\mbox{#2}}\par\smallskip
+    {\small\color{ink}#3}
+  \end{tcolorbox}}
+% status of statements
+\newcommand{\Mes}{\textsf{\scriptsize\bfseries\color{member}[M]}}  % measured fact
+\newcommand{\Int}{\textsf{\scriptsize\bfseries\color{muted}[I]}}   % interpretation
+\newcommand{\Hyp}{\textsf{\scriptsize\bfseries\color{casual}[H]}}  % hypothesis to test
+
+% --- Figures, links ------------------------------------------------------------------
+\RequirePackage{graphicx, float}
+\RequirePackage{xurl}
+\RequirePackage[hidelinks, unicode, pdfusetitle, bookmarksnumbered]{hyperref}
+\newcommand{\file}[1]{\texttt{\small #1}}
+
+% --- Title page (Eisvogel: coloured page, rule above the title) ----------------------
+\RequirePackage{pagecolor, afterpage}
+\newcommand{\colorRule}[3][accent]{\textcolor{#1}{\rule{#2}{#3}}}
+\newcommand{\MakeTitlePage}{%
+  \begin{titlepage}
+  \newgeometry{left=2.6cm, right=2.6cm, top=3cm, bottom=2.6cm}
+  \newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
+  \begin{flushleft}
+  \vspace*{5.2cm}
+  \colorRule{3.2cm}{3pt}\par\vspace{1.6cm}
+  {\sffamily\bfseries\fontsize{30}{36}\selectfont\color{ink}\ReportTitle\par}
+  \vspace{0.9cm}
+  {\sffamily\itshape\Large\color{ink}\ReportSubtitle\par}
+  \vspace{1.1cm}
+  {\sffamily\color{muted}\ReportContext\par}
+  \vfill
+  {\color{rule}\rule{\linewidth}{0.5pt}}\par\vspace{0.4cm}
+  {\sffamily\small\color{muted}\ReportMeta\par}
+  \end{flushleft}
+  \end{titlepage}
+  \restoregeometry}
+\endinput

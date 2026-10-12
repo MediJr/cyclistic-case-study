@@ -1,0 +1,5 @@
+member_casual,rideable_type,trajets,part_pct,mediane_min,moyenne_min
+casual,classic_bike,548649,25.95,15.69,39.84
+casual,electric_bike,1565851,74.05,10.08,14.54
+member,classic_bike,1235712,31.70,9.17,15.25
+member,electric_bike,2662246,68.30,8.50,11.37

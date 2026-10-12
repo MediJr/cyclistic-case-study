@@ -1,0 +1,21 @@
+member_casual,tranche,trajets,part_pct
+casual,01: 1-5 min,332594,15.73
+casual,02: 5-10 min,611233,28.91
+casual,03: 10-15 min,401349,18.98
+casual,04: 15-20 min,239328,11.32
+casual,05: 20-30 min,244823,11.58
+casual,06: 30-45 min,140318,6.64
+casual,07: 45-60 min,58513,2.77
+casual,08: 1-2 h,64981,3.07
+casual,09: 2-24 h,17165,0.81
+casual,10: > 24 h,4196,0.20
+member,01: 1-5 min,913848,23.44
+member,02: 5-10 min,1317939,33.81
+member,03: 10-15 min,730178,18.73
+member,04: 15-20 min,386629,9.92
+member,05: 20-30 min,338276,8.68
+member,06: 30-45 min,150732,3.87
+member,07: 45-60 min,33666,0.86
+member,08: 1-2 h,18233,0.47
+member,09: 2-24 h,7349,0.19
+member,10: > 24 h,1108,0.03

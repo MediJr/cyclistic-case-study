@@ -1,0 +1,35 @@
+\appendix
+\section{References}
+\label{sec:refs}
+
+\begin{enumerate}[label={[\arabic*]}, leftmargin=2em]
+  \item Google, \emph{Case Study 1: How does a bike-share navigate speedy success?}, Google Data Analytics Professional Certificate (document provided to learners, accessed October 2026).
+  \item Divvy, historical trip data: \url{https://divvy-tripdata.s3.amazonaws.com/index.html} (12 monthly files, October 2025 to September 2026, downloaded on 11~October 2026).
+  \item Divvy, \emph{Data License Agreement} (Lyft Bikes and Scooters, LLC; data owned by the City of Chicago): \url{https://www.divvybikes.com/data-license-agreement}, accessed October 2026. The case study refers to the data as made available by Motivate International Inc.
+  \item Divvy, \emph{System Data} (data processing, including the removal of rides shorter than 60~seconds): \url{https://divvybikes.com/system-data}, accessed on 11~October 2026.
+  \item P. Wagler, J. MacFarlane, \emph{Eisvogel}, LaTeX template for pandoc, BSD 3-Clause license: \url{https://github.com/Wandmalfarbe/pandoc-latex-template} (basis of this report's layout).
+\end{enumerate}
+
+\section{Reproducibility}
+\label{sec:repro}
+
+\begin{table}[H]
+\caption{Processing pipeline and associated files}
+\label{tab:repro}
+\small
+\begin{tabularx}{\linewidth}{L{3.4cm} Y}
+\toprule
+\thead{Step} & \thead{Files (project repository)} \\
+\midrule
+Cleaning rules & \file{docs/plan\_nettoyage\_v3.2.md}, \file{config/regles\_nettoyage\_v3.2.json} \\
+Cleaning and checks & \file{scripts/run\_clean.py}, \file{sql/02\_clean.sql}, \file{sql/03\_qa\_clean.sql} \\
+Quality results & \file{docs/methodology.md}, \file{results/quality/} \\
+Analysis aggregations & \file{sql/10\_analyse.sql}, \file{scripts/run\_analyse.py} $\rightarrow$ \file{results/analysis/} \\
+Charts & \file{scripts/figures\_analyse.py} $\rightarrow$ \file{visualizations/} \\
+Sensitivity analyses & \file{sql/04\_sensitivity.sql}, \file{scripts/run\_sensitivity.py} $\rightarrow$ \file{results/quality/} \\
+This report & \file{scripts/generate\_latex\_tables.py}, \file{scripts/build\_latex\_report.py}, \file{reports/latex/} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The numerical tables in this report are generated from the analysis CSV files; the numbers quoted in the text are checked automatically by \file{scripts/build\_latex\_report.py} before each build. Build instructions are given in \file{reports/latex/README.md}.

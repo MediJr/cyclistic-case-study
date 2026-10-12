@@ -1,0 +1,48 @@
+\section{Data cleaning, quality assurance and methodological limitations}
+\label{sec:cleaning}
+
+\subsection{Cleaning rules (version v3.2)}
+
+Cleaning was executed in \textbf{a single PostgreSQL transaction}: had a blocking check failed, nothing would have been written.
+Four exclusion rules are applied in a fixed order; each excluded row receives a single reason, and no row meets two criteria \Mes.
+
+\begin{table}[H]
+\caption{Row reconciliation: from raw data to analyzed rides}
+\label{tab:cascade}
+\small
+\input{generated/t_cascade}
+\par\smallskip{\footnotesize\color{muted}Source: \file{config/attendus\_v3.2.json}, counts verified at execution time (\file{audit.transform\_log}).}
+\end{table}
+
+\begin{itemize}
+  \item \textbf{60-second threshold:} Divvy's documentation states that rides shorter than 60~seconds are removed from its data (false starts, re-docking); they remained in the files, \textbf{exclusively for e-bikes}. Excluding them is a provisional choice, backed by a sensitivity analysis.
+  \item \textbf{Kept, not removed globally:} rides without a station (e-bikes parked outside a station), without end coordinates or longer than 24~hours; they are left out only of the analyses that require this information.
+  \item \textbf{Minimal normalization:} only leading and trailing spaces were removed from station names and identifiers; no stations were merged and no values were imputed.
+  \item \textbf{Daylight saving time changes:} raw durations are kept; a correction of $-3{,}600$~s, in a separate column, applies to the 40 rides spanning the skipped hour of 8~March 2026 (four criteria checked ride by ride); no automatic correction when clocks go back in the fall.
+\end{itemize}
+
+\subsection{Quality checks}
+
+\begin{table}[H]
+\caption{Results of the 72 post-cleaning quality checks}
+\label{tab:qa}
+\small
+\begin{tabularx}{\linewidth}{L{3.4cm} r Y}
+\toprule
+\thead{Status} & \thead{Count} & \thead{Comment} \\
+\midrule
+OK & 62 & Reconciliation raw = kept + excluded, every row matched to its source, raw data unchanged, timestamps, uniqueness, station normalization. \\
+Informational & 8 & Station check lists (identifiers with several names, spatial spread) and descriptive counts. \\
+Known anomaly & 1 & No March ride ending in April (a characteristic of the source, Section~\ref{sec:data}). \\
+Explained failure & 1 & Maximum duration of 93,597.011~s against a reference value rounded to 93,597~s: an error in the expected value, with no effect on the data (no rule caps durations). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Methodological limitations}
+\begin{itemize}
+  \item \textbf{Rides, not people:} no customer count and no individual ride frequency.
+  \item \textbf{A single year:} seasonality and underlying trend cannot be separated.
+  \item \textbf{Station coverage:} 20.0\% of rides have no start station and 20.8\% no end station, mostly e-bike rides; station-level analyses are deferred.
+  \item \textbf{Robustness:} the differences between groups persist when rides shorter than 60~s are added back (median with / without these rides: 646.2 / 669.9~s for casual riders, 510.6 / 521.4~s for members) and when 31~March and 1~April are removed (overall median 568.0~s instead of 567.4~s).
+\end{itemize}

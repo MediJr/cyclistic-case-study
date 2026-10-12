@@ -1,0 +1,26 @@
+\addsec{Reading guide and key terms}
+
+This report covers the six phases of the project (\emph{Ask, Prepare, Process, Analyze, Share, Act}).
+Each key statement carries a status label: \Mes{} fact measured in the data;
+\Int{} interpretation of the measurements; \Hyp{} marketing hypothesis to be validated through experimentation.
+The figures in the tables are generated automatically from the analysis files (Appendix~\ref{sec:repro}).
+
+\begin{table}[H]
+\caption{Terms and labels used in this report}
+\label{tab:terms}
+\small
+\begin{tabularx}{\linewidth}{L{3.3cm} Y}
+\toprule
+\thead{Term} & \thead{Meaning} \\
+\midrule
+Ride & Unit of analysis: one bike rental, from unlocking to docking. The data set contains no rider identifier: we count \textbf{rides}, never people. \\
+Member / casual & The \texttt{member\_casual} field of the source: annual membership (\emph{member}) or single-ride and full-day passes (\emph{casual}). \\
+Median & The value that splits rides into two equal halves; the main duration indicator, because a few very long rides pull the mean upwards. \\
+Round trip & A ride that ends at the station where it started; computed only for rides with both a start and an end station. \\
+Peak hours & Weekday departures between 7 and 9 a.m. and between 4 and 7 p.m. (Chicago local time). \\
+v3.2 & Version of the data-cleaning rules applied (documented in \file{docs/plan\_nettoyage\_v3.2.md}). \\
+SENS-1, SENS-2 & Sensitivity analyses: with or without positive rides shorter than 60~s; with or without 31~March and 1~April 2026. \\
+A/B test & Controlled comparison of two versions of a message shown to randomly assigned groups. \\
+\bottomrule
+\end{tabularx}
+\end{table}

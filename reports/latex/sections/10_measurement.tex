@@ -1,0 +1,31 @@
+\section{Evaluation framework for the recommendations}
+\label{sec:measurement}
+
+The primary metrics measure conversions and require Cyclistic's account data; the secondary metrics, which can be computed from the rides, provide context and \textbf{do not prove} on their own the effect of an action.
+
+\begin{table}[!htbp]
+\caption{Tracking metrics and baseline values}
+\label{tab:kpi}
+\small
+\begin{tabularx}{\linewidth}{c Y L{2.6cm} L{3.0cm}}
+\toprule
+\thead{Rec.} & \thead{Metric} & \thead{Current baseline} & \thead{Data required} \\
+\midrule
+1 & \textbf{Primary:} 60-day conversion, exposed group vs control group & not available & accounts, memberships, A/B assignment \\
+1 & Share of weekday peak-hour rides taken by members & 73.8\% & rides \\
+2 & \textbf{Primary:} new memberships, test areas vs control areas & not available & memberships by area \\
+2 & Casual share of rides in April, May, June & 29.2 / 37.2 / 40.1\% & rides \\
+3 & \textbf{Primary:} clicks and conversions by message variant & not available & message logs, accounts \\
+3 & Share of rides lasting at least 30~min, casual / members & 13.5 / 5.4\% & rides \\
+\bottomrule
+\end{tabularx}
+\par\smallskip{\footnotesize\color{muted}Baselines computed from the rides of October 2025 to September 2026; source tables in \file{results/analysis/}: \file{a02\_durees\_tranches.csv}, \file{a04\_mois.csv} and \file{a05\_heure.csv}.}
+\end{table}
+
+\textbf{Evaluation protocol.}
+\begin{itemize}
+  \item \textbf{Systematic control group:} random assignment (A/B test) for recommendations 1 and 3; comparable control areas, using difference-in-differences, for recommendation 2.
+  \item \textbf{Like-for-like periods:} seasonality (×14 for casual riders) makes any month-to-month comparison misleading.
+  \item \textbf{Success criterion set in advance:} minimum conversion uplift deemed useful by management, sample size calculated before launch.
+  \item \textbf{Same calculation rules:} baselines recomputed with the same scripts and the same cleaning rules (v3.2) to remain comparable.
+\end{itemize}

@@ -1,0 +1,73 @@
+controle,libelle,attendu,mesure,statut
+RO,session en lecture seule,on,on,OK
+Q1a,SHA-256 des fichiers sources = raw.source_files,[],[],OK
+Q1b,empreinte exhaustive de raw.trips = référence audit 4.1,identique,identique,OK
+Q2,raw = clean + exclusions,"(6171785, 6012458, 159327)","(6171785, 6012458, 159327)",OK
+Q2b,raw − clean − exclusions,0,0,OK
+Q3,lignes brutes sans état / dans deux états,"(0, 0)","(0, 0)",OK
+Q4,lignes hors période dans clean,0,0,OK
+Q4b,min/max started_at dans la période,True,True,OK
+Q5,conservés par mois,"{'2025-10': 629080, '2025-11': 346963, '2025-12': 136584, '2026-01': 133936, '2026-02': 197432, '2026-03': 308729, '2026-04': 435832, '2026-05': 635978, '2026-06': 742079, '2026-07': 846786, '2026-08': 847158, '2026-09': 751901}","{'2025-10': 629080, '2025-11': 346963, '2025-12': 136584, '2026-01': 133936, '2026-02': 197432, '2026-03': 308729, '2026-04': 435832, '2026-05': 635978, '2026-06': 742079, '2026-07': 846786, '2026-08': 847158, '2026-09': 751901}",OK
+Q5b,conservés par type d'usager,"{'member': 3897958, 'casual': 2114500}","{'casual': 2114500, 'member': 3897958}",OK
+Q6,ride_month ≠ date_trunc(started_at),0,0,OK
+Q7,"CSV 202501 : file_month / trajets en 2025-01 / mois attribués ⊆ {2025-12, 2026-01}","('2026-01', 0, True)","('2026-01', 0, True)",OK
+Q8,ride_id uniques dans clean,6012458,6012458,OK
+Q9,exclusions par motif,"{'duplicate_ride_id': 35, 'out_of_period': 71, 'negative_duration': 29, 'under_60s': 159192}","{'duplicate_ride_id': 35, 'negative_duration': 29, 'out_of_period': 71, 'under_60s': 159192}",OK
+Q9b,lignes exclues remplissant plusieurs critères (motifs disjoints attendus),0,0,OK
+Q10,horodatages clean ≠ raw (comparaison de valeurs),0,0,OK
+Q10b,format AAAA-MM-JJ HH24:MI:SS.MS ≠ texte source,0,0,OK
+Q11,durées / jour / heure recalculés différents,"(0, 0)","(0, 0)",OK
+Q11b,2025-10-05 (dimanche) → day_of_week,1,1,OK
+Q12,indicateurs d'heure d'automne / d'heure d'été,"(474, 40)","(474, 40)",OK
+Q12b,corrigés + non confirmés = trajets enjambant l'heure sautée,40,40,OK
+Q12c,corrections hors heure sautée / le 02/11/2025 / statut incohérent,"(0, 0, 0)","(0, 0, 0)",OK
+Q12d,trajets corrigés (heure d'été),≤ 40,40,INFO
+Q13,durée minimale dans clean ≥ seuil,True,True,OK
+Q13b,motifs incohérents avec le signe de la durée,"(0, 0)","(0, 0)",OK
+Q13c,durées nulles exclues (dans under_60s),—,0,INFO
+Q14,trajets sans arrivée conservés,5432,5432,OK
+Q16,trajets > 24 h conservés,5304,5304,OK
+Q16b,durée maximale ≤ référence,True,False,ÉCHEC
+Q17a,stations manquantes départ / arrivée,"(1201895, 1250672)","(1201895, 1250672)",OK
+Q15,effectifs des vues d'analyse,"{'v_trips_geo': 6007026, 'v_trips_start_station': 4810563, 'v_trips_end_station': 4761786, 'v_trips_station_pair': 4049494}","{'v_trips_station_pair': 4049494, 'v_trips_end_station': 4761786, 'v_trips_geo': 6007026, 'v_trips_start_station': 4810563}",OK
+Q15b,population SENS-1 = conservés + under_60s,6171650,6171650,OK
+Q17,"'' / paires nom-ID / clean ≠ btrim(raw, ' ')","(0, 0, 0)","(0, 0, 0)",OK
+Q20,end_station_id : indicateurs = valeurs brutes avec espace en bordure,572,572,OK
+Q20,end_station_id : espaces en bordure restants,0,0,OK
+Q20,end_station_id : espaces doubles internes préservés,0,0,OK
+Q20,end_station_id : lignes normalisées ≤ référence brute,True,True,OK
+Q20,end_station_id : journal (lignes) = indicateurs,572,572,OK
+Q20,end_station_id : valeurs distinctes normalisées ≤ référence,True,True,OK
+Q20,end_station_id : fusions ⊆ fusions attendues,True,True,OK
+Q20,end_station_name : indicateurs = valeurs brutes avec espace en bordure,36242,36242,OK
+Q20,end_station_name : espaces en bordure restants,0,0,OK
+Q20,end_station_name : espaces doubles internes préservés,4,4,OK
+Q20,end_station_name : lignes normalisées ≤ référence brute,True,True,OK
+Q20,end_station_name : journal (lignes) = indicateurs,36242,36242,OK
+Q20,end_station_name : valeurs distinctes normalisées ≤ référence,True,True,OK
+Q20,end_station_name : fusions ⊆ fusions attendues,True,True,OK
+Q20,start_station_id : indicateurs = valeurs brutes avec espace en bordure,635,635,OK
+Q20,start_station_id : espaces en bordure restants,0,0,OK
+Q20,start_station_id : espaces doubles internes préservés,0,0,OK
+Q20,start_station_id : lignes normalisées ≤ référence brute,True,True,OK
+Q20,start_station_id : journal (lignes) = indicateurs,635,635,OK
+Q20,start_station_id : valeurs distinctes normalisées ≤ référence,True,True,OK
+Q20,start_station_id : fusions ⊆ fusions attendues,True,True,OK
+Q20,start_station_name : indicateurs = valeurs brutes avec espace en bordure,33908,33908,OK
+Q20,start_station_name : espaces en bordure restants,0,0,OK
+Q20,start_station_name : espaces doubles internes préservés,2,2,OK
+Q20,start_station_name : lignes normalisées ≤ référence brute,True,True,OK
+Q20,start_station_name : journal (lignes) = indicateurs,33908,33908,OK
+Q20,start_station_name : valeurs distinctes normalisées ≤ référence,True,True,OK
+Q20,start_station_name : fusions ⊆ fusions attendues,True,True,OK
+Q19,journal des étapes chaîné et final = clean,"(True, 6012458)","(True, 6012458)",OK
+Q21,trajets de mars terminés en avril (anomalie connue F14),0,0,ANOMALIE_CONNUE
+Q22,doublons exclus / fichier exclu / fichier gardé / contenus différents / ligne gardée absente,"(35, '202605-divvy-tripdata.csv', '202604-divvy-tripdata.csv', 0, 0)","(35, '202605-divvy-tripdata.csv', '202604-divvy-tripdata.csv', 0, 0)",OK
+S1,end : ID à plusieurs noms (dont triviaux) — référence lignes brutes,53,51 (7 triviaux) sur 2011 ID,INFO
+S1,start : ID à plusieurs noms (dont triviaux) — référence lignes brutes,55,54 (7 triviaux) sur 1973 ID,INFO
+S2,end : noms à plusieurs ID — référence lignes brutes,59,58,INFO
+S2,start : noms à plusieurs ID — référence lignes brutes,60,60,INFO
+S3,"ID (vélos classiques) : étendue > 0,005° / p95 > 100 m / p95 > 250 m (repères indicatifs)",—,"(6, 21, 6)",INFO
+S5,lignes conservées touchant une station « interne » (aucune exclusion),41,41,INFO
+S6,nom NULL ⇔ ID NULL / ID vide,"(0, 0)","(0, 0)",OK
+RUN,exécution enregistrée dans audit.run,1,1,OK

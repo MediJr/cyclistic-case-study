@@ -1,0 +1,32 @@
+\section{Methodology: from question to action}
+\label{sec:method}
+
+The project follows the six phases of the Google Data Analytics process. Each phase produced a verifiable deliverable.
+
+\begin{table}[H]
+\caption{The six phases of the project and their deliverables}
+\label{tab:phases}
+\small
+\begin{tabularx}{\linewidth}{L{2.1cm} Y L{4.6cm}}
+\toprule
+\thead{Phase} & \thead{Work performed} & \thead{Deliverable} \\
+\midrule
+\textbf{Ask} & Business task, stakeholders, question 1; scope limited to rides. & Statement of the business task (Section~\ref{sec:context}). \\
+\textbf{Prepare} & Download of the 12 files, SHA-256 checksums, consistency audit (rows, columns, dates, identifiers). & Data collection audit. \\
+\textbf{Process} & Raw import into PostgreSQL, cleaning plan v3.2 reviewed several times, cleaning in a single transaction, 72 quality checks. & Cleaning plan (\file{docs/}); \file{clean.trips} table; QA results (\file{results/quality/}). \\
+\textbf{Analyze} & Read-only SQL aggregations, consistency checks on totals, sensitivity analyses. & 12 CSV tables (\file{results/analysis/}). \\
+\textbf{Share} & Matplotlib visualizations, presentation and this report. & 11 charts; PowerPoint presentation (not included in this repository). \\
+\textbf{Act} & Three recommendations with indicators and an evaluation method. & Sections~\ref{sec:recos} and~\ref{sec:measurement}. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Tools.} PostgreSQL~18 (raw storage, cleaning, aggregations); Python with pandas and Matplotlib (checks, charts); PowerPoint (presentation); XeLaTeX (this report).
+
+\textbf{Working principles.}
+\begin{itemize}
+  \item \textbf{Raw data left intact:} the raw table is never modified; its exhaustive fingerprint is checked before and after each processing step.
+  \item \textbf{Traceability:} every kept or excluded ride is linked to its source row; every exclusion has a single reason.
+  \item \textbf{Read-only analysis:} the aggregations write nothing to the database; the results are time-stamped CSV files with run logs.
+  \item \textbf{Robust indicators:} the median is the main duration indicator; percentages are computed on each group's rides.
+\end{itemize}
